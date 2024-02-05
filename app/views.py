@@ -7,15 +7,30 @@ from .models import Students
 from .serializers import StudentsSerializer
 
 #CREATE
-#Create Student
+#Create Students
 @api_view(['POST'])
 def CreateStudent(request):
     if request.method == 'POST':
+        username = request.data.get('username', None)
+
+        # Check if the username already exists
+        if Students.objects.filter(username=username).exists():
+            return Response({
+                'message': 'Username already exists. Please choose a different username.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
         serializer = StudentsSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({
+                'message': 'Student added successfully',
+                'data': serializer.data
+            }, status=status.HTTP_201_CREATED)
+
+        return Response({
+            'message': 'Error adding student',
+            'errors': serializer.errors
+        }, status=status.HTTP_400_BAD_REQUEST)
     
 #READ
 #Get All Students
