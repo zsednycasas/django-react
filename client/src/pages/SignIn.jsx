@@ -21,7 +21,7 @@ export default function SignIn() {
             <Checkbox id="remember" />
             <Label htmlFor="remember">Remember me</Label>
           </div>
-          <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
+          <Button gradientDuoTone="pinkToOrange">Sign In</Button>
         </form>
       </Card>
     </div>
