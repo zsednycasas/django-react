@@ -15,4 +15,12 @@ path('edit-student/<int:pk>/', views.EditStudent, name='edit_student'),
 #DELETE API
 path('delete-student/<int:pk>/', views.DeleteStudent, name='delete_student'),
 
+path('login', views.login),
+
+path('signup', views.signup),
+
+path('TestView', views.TestView),
+
+path('logout', views.logout),
+
 ]

@@ -65,6 +65,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Add the URL of your React app here
     # Add more allowed origins as neededhttp://localhost:5173/
 ]
+CORS_ALLOW_CREDENTIALS = True
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
